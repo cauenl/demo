@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f4f4; padding:20px; color:#2c3e50;">
+    <div style="max-width:600px; margin:auto; background:#ffffff; padding:24px; border-radius:6px;">
+
+        <h2 style="margin-top:0;">
+            Olá, <span th:text="${nomeCliente}">Cliente</span>!
+        </h2>
+
+        <p th:text="${mensagemImobiliaria}">Mensagem da imobiliária.</p>
+
+        <hr style="border:none; border-top:1px solid #dddddd;">
+
+        <h3 th:text="${titulo}">Título do imóvel</h3>
+
+        <p th:if="${descricao != null}" th:text="${descricao}">Descrição</p>
+
+        <table style="width:100%; border-collapse:collapse;">
+            <tr th:if="${tipoImovel != null}">
+                <td style="padding:4px 0; font-weight:bold;">Tipo</td>
+                <td th:text="${tipoImovel}">Tipo</td>
+            </tr>
+            <tr th:if="${finalidade != null}">
+                <td style="padding:4px 0; font-weight:bold;">Finalidade</td>
+                <td th:text="${finalidade}">Finalidade</td>
+            </tr>
+            <tr th:if="${status != null}">
+                <td style="padding:4px 0; font-weight:bold;">Situação</td>
+                <td th:text="${status}">Situação</td>
+            </tr>
+            <tr th:if="${precoVenda != null}">
+                <td style="padding:4px 0; font-weight:bold;">Preço de venda</td>
+                <td th:text="'R$ ' + ${#numbers.formatDecimal(precoVenda, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</td>
+            </tr>
+            <tr th:if="${precoAluguel != null}">
+                <td style="padding:4px 0; font-weight:bold;">Aluguel</td>
+                <td th:text="'R$ ' + ${#numbers.formatDecimal(precoAluguel, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</td>
+            </tr>
+            <tr th:if="${dormitorios != null}">
+                <td style="padding:4px 0; font-weight:bold;">Dormitórios</td>
+                <td th:text="${dormitorios}">0</td>
+            </tr>
+            <tr th:if="${banheiros != null}">
+                <td style="padding:4px 0; font-weight:bold;">Banheiros</td>
+                <td th:text="${banheiros}">0</td>
+            </tr>
+            <tr th:if="${garagem != null}">
+                <td style="padding:4px 0; font-weight:bold;">Vagas de garagem</td>
+                <td th:text="${garagem}">0</td>
+            </tr>
+            <tr th:if="${areaTotal != null}">
+                <td style="padding:4px 0; font-weight:bold;">Área total</td>
+                <td th:text="${#numbers.formatDecimal(areaTotal, 1, 'POINT', 2, 'COMMA')} + ' m²'">0 m²</td>
+            </tr>
+            <tr th:if="${areaConstruida != null}">
+                <td style="padding:4px 0; font-weight:bold;">Área construída</td>
+                <td th:text="${#numbers.formatDecimal(areaConstruida, 1, 'POINT', 2, 'COMMA')} + ' m²'">0 m²</td>
+            </tr>
+            <tr th:if="${bairro != null}">
+                <td style="padding:4px 0; font-weight:bold;">Bairro</td>
+                <td th:text="${bairro}">Bairro</td>
+            </tr>
+            <tr th:if="${endereco != null and endereco != ''}">
+                <td style="padding:4px 0; font-weight:bold;">Endereço</td>
+                <td th:text="${endereco}">Endereço</td>
+            </tr>
+            <tr th:if="${caracteristicas != null}">
+                <td style="padding:4px 0; font-weight:bold;">Características</td>
+                <td th:text="${caracteristicas}">Características</td>
+            </tr>
+        </table>
+
+        <hr style="border:none; border-top:1px solid #dddddd;">
+
+        <p style="font-size:13px; color:#666666;">
+            Recebemos a sua mensagem:<br>
+            <em th:text="${mensagemCliente}">Mensagem do cliente</em>
+        </p>
+        <p style="font-size:13px; color:#666666;">
+            Contato informado: <span th:text="${telefoneCliente}">telefone</span>
+            &middot; <span th:text="${emailCliente}">e-mail</span>
+        </p>
+
+        <p style="margin-bottom:0;">Atenciosamente,<br>
+            <strong th:text="${nomeImobiliaria}">Imobiliária</strong>
+        </p>
+    </div>
+</body>
+</html>
